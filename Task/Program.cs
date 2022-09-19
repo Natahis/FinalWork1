@@ -17,17 +17,23 @@ string[] array3 = { "Russia", "Denmark", "Kazan" };
 
 string[] FoundLengtString(string[] array, int size)
 {
-    string[] result = new string[array.Length];
+    int length = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= size) length++;
+    }
+
+    string[] newarray = new string[length];
     int j = 0;
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i].Length <= size)
         {
-            result[j] = array[i];
+            newarray[j] = array[i];
             j++;
         }
     }
-    return result;
+    return newarray;
 }
 
 void PrintArray(string[] array)
@@ -35,12 +41,27 @@ void PrintArray(string[] array)
     Console.Write("[");
     for (int i = 0; i < array.Length; i++)
     {
-        if (i < array.Length - 1) Console.Write($"{array[i]},");
+        if (i < array.Length - 1) Console.Write($"{array[i]}, ");
         else Console.Write(array[i]);
     }
-    Console.WriteLine("]");
-    Console.WriteLine();
+    Console.Write("]");
+    
 }
 
-string[] arr1 = FoundLengtString(array1, 3);
-PrintArray(arr1);
+PrintArray(array1);
+Console.Write($" -> ");
+string[] result1 = FoundLengtString(array1, 3);
+PrintArray(result1);
+Console.WriteLine();
+
+PrintArray(array2);
+Console.Write($" -> ");
+string[] result2 = FoundLengtString(array2, 3);
+PrintArray(result2);
+Console.WriteLine();
+
+PrintArray(array3);
+Console.Write($" -> ");
+string[] result3 = FoundLengtString(array3, 3);
+PrintArray(result3);
+Console.WriteLine();
